@@ -6,7 +6,7 @@ class OrderCreateDto
     private string $lastName;
     private string $firstName;
     private string $patronymic;
-    private string $comment;
+    private ?string $comment;
     private string $article;
     private string $manufacturer;
 
@@ -14,7 +14,7 @@ class OrderCreateDto
         string $lastName,
         string $firstName,
         string $patronymic,
-        string $comment,
+        ?string $comment,
         string $article,
         string $manufacturer
     )
@@ -42,7 +42,7 @@ class OrderCreateDto
         return $this->patronymic;
     }
 
-    public function getComment(): string
+    public function getComment(): ?string
     {
         return $this->comment;
     }
