@@ -13,6 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [\App\Http\Controllers\OrderController::class, 'form'])->name('order.form');
+Route::post('order/store', [\App\Http\Controllers\OrderController::class, 'store'])->name('order.store');
