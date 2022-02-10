@@ -28,7 +28,7 @@ class OrderService
         }
         $product = $product->getReturnValue();
         $products = [
-            $product['id']
+            ['externalId' => $product['externalId']]
         ];
 
         $order = $this->retailcrmService->order($orderCreateDto, $products);
