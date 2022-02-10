@@ -30,4 +30,17 @@ class RetailcrmBase
 
         return $response;
     }
+
+    protected function sendPost(string $link, array $params): array
+    {
+        $url = $this->url . $link;
+        $response = Http::timeout($this->timeout)
+                    ->withHeaders([
+                        'X-API-KEY' => $this->token
+                    ])
+                    ->post($url, $params)
+                    ->throw()->json();
+
+        return $response;
+    }
 }
