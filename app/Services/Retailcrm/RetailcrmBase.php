@@ -26,7 +26,7 @@ class RetailcrmBase
                         'X-API-KEY' => $this->token
                     ])
                     ->get($url, $params)
-                    ->throw()->json();
+                    ->json();
 
         return $response;
     }
@@ -34,13 +34,13 @@ class RetailcrmBase
     protected function sendPost(string $link, array $params): array
     {
         $url = $this->url . $link;
-        $response = Http::timeout($this->timeout)
+        $response = Http::asForm()
+                    ->timeout($this->timeout)
                     ->withHeaders([
                         'X-API-KEY' => $this->token
                     ])
                     ->post($url, $params)
-                    ->throw()->json();
-
+                    ->json();
         return $response;
     }
 }
